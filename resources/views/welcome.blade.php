@@ -4,8 +4,10 @@
     <div class="cover">
         <div class="cover-inner">
             <div class="cover-contents">
-                <h1>1冊の本が人生を変えてくれた</h1>
-                <a href="" class="btn btn-success btn-lg">Dokushokaを始める</a>
+                <h1>1冊の本が人生を変えてくれた。</h1>
+                @if (!Auth::check())
+                <a href="{{ route('register') }}" class="btn btn-success btn-lg">DOKUSHOKAを始める</a>
+                @endif
             </div>
         </div>
     </div>
