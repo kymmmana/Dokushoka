@@ -8,16 +8,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo"href="/"><!--img src="{{ secure_asset("images/logo.png") }}" alt="Dokushoka"-->DOKUSHOKA</a>
+                <a class="navbar-brand logo"href="/"><img src="{{ secure_asset("images/DOKUSHOKA.png") }}" alt="Dokushoka"</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::check())
                         <li>
-                            <a href="#">
+                           <a href="{{ route('books.create') }}" class="nav-book">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                アイテムを追加
-                              </a>
+                                BOOKを追加
+                            </a>
                         </li>
                         
                     <li class="dropdown">
@@ -30,7 +30,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">マイページ</a>
+                                  <a href="{{ route('users.show', Auth::user()->id) }}">マイページ</a>
                                 </li>
                                 <li role="separator" class="divider"></li>
                                 <li>

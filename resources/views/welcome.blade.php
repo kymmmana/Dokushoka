@@ -2,6 +2,7 @@
 
 @section('cover')
     <div class="cover">
+     
         <div class="cover-inner">
             <div class="cover-contents">
                 <h1>1冊の本が人生を変えてくれた。</h1>
@@ -14,5 +15,6 @@
 @endsection
 
 @section('content')
-    テスト
+    @include('books.books')
+    {!! $books->render() !!}
 @endsection

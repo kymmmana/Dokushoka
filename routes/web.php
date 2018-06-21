@@ -16,3 +16,10 @@ Route::get('/', 'WelcomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('books', 'BooksController', ['only' => ['create', 'show']]);
+    Route::post('want', 'BookUserController@want')->name('book_user.want');
+    Route::delete('want', 'BookUserController@dont_want')->name('book_user.dont_want');
+    Route::resource('users', 'UsersController', ['only' => ['show']]);
+});
