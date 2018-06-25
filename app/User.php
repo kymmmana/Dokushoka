@@ -60,7 +60,7 @@ class User extends Authenticatable
 
         if ($exist) {
             // remove "want"
-            \DB::delete("DELETE FROM book_user WHERE user_id = ? AND book_id = ? AND type = 'want'", [\Auth::user()->id, $itemId]);
+            \DB::delete("DELETE FROM book_user WHERE user_id = ? AND book_id = ? AND type = 'want'", [\Auth::id(), $itemId]);
         } else {
             // do nothing
             return false;
@@ -76,5 +76,11 @@ class User extends Authenticatable
             $book_isbn_exists = $this->want_books()->where('isbn', $itemIdOrIsbn)->exists();
             return $book_isbn_exists;
         }
+    }
+    
+    
+      public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

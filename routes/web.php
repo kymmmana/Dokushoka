@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('ranking/want', 'RankingController@want')->name('ranking.want');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('books', 'BooksController', ['only' => ['create', 'show']]);
     Route::post('want', 'BookUserController@want')->name('book_user.want');

@@ -27,7 +27,7 @@ class BookUserController extends Controller
             'isbn' => $rws_book['isbn'],
             'title' => $rws_book['title'],
             'author' => $rws_book['author'],
-           
+            'itemCaption' => $rws_book['itemCaption'],
             'url' => $rws_book['itemUrl'],
             // remove "?_ex=128x128" because its size is defined
             'image_url' => str_replace('?_ex=120x120', '', $rws_book['mediumImageUrl']),

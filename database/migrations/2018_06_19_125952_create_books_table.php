@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->increments('id');
             $table->string('isbn');
              $table->string('author');
-             
+             $table->text('itemCaption');
             $table->string('title');
             $table->string('url');
              $table->string('image_url');
@@ -33,5 +33,6 @@ class CreateBooksTable extends Migration
     public function down()
     {
         Schema::dropIfExists('books');
+    
     }
 }

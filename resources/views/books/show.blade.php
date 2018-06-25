@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-3">
-            <div class="book">
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                        <img src="{{ $book->image_url }}" alt="">
-                    </div>
-                    <div class="panel-body">
-                        <p class="item-title">{{ $book->title }}</p>
-                        <p class="item-title">{{ $book->author }}</p>
+    <div class="row show">
+        <div class="col-md-6 ">
+         
+                <div class="card show-more">
+                    
+                        <img class= "card-img show-more" src="{{ $book->image_url }}" alt="">
+                    
+                    <div class="card-footer text-center">
+                        <p class="card-title">タイトル: {{ $book->title }}</p>
+                        <p class="card-title">作者: {{ $book->author }}</p>
                         <div class="buttons text-center">
                             @if (Auth::check())
                                 @include('books.want_button', ['book' => $book])
@@ -18,28 +18,34 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
 
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-4">
             <div class="want-users">
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                        Loveしたユーザ
+                <div class="card">
+                    <div class="card-header text-center">
+                        Item Caption
                     </div>
-                    <div class="panel-body">
+                    
+                     <div class="card-body text-center">
                         @foreach ($want_users as $user)
-                            <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>
+                            <P>{{ $book->itemCaption}}</a>
                         @endforeach
                     </div>
                 </div>
             </div>
             <div class="have-users">
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                        Readしたユーザ
+                <div class="card">
+                    <div class="card-header text-center">
+                        Loveしたユーザー
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
+                        <div class="card-body text-center">
+                        @foreach ($want_users as $user)
+                            <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>
+                        @endforeach
+                    </div
                     </div>
                 </div>
             </div>

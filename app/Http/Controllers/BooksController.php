@@ -21,7 +21,7 @@ use App\Http\Controllers\Controller;
                 'title' => $s_title,
                 'author' => $s_author,
                 'imageFlag' => 1,
-                'hits' => 20,
+               
             ]);
 
             // Creating "Item" instance to make it easy to handle.（not saving）
@@ -30,7 +30,7 @@ use App\Http\Controllers\Controller;
                 $book->isbn = $rws_book['Item']['isbn'];
                 $book->title = $rws_book['Item']['title'];
                 $book->author = $rws_book['Item']['author'];
-
+               $book->itemCaption = $rws_book['Item']['itemCaption'];
                 $book->url = $rws_book['Item']['itemUrl'];
                 $book->image_url = str_replace('?_ex=120x120', '', $rws_book['Item']['mediumImageUrl']);
                 $books[] = $book;
@@ -48,10 +48,12 @@ use App\Http\Controllers\Controller;
     {
       $book = Book::find($id);
       $want_users = $book->want_users;
+      $itemCaption = $book->itemCaption;
 
       return view('books.show', [
           'book' => $book,
           'want_users' => $want_users,
+          'itemCaption' => $itemCaption
       ]);
     }
   }

@@ -32,37 +32,111 @@ footer {
     height: 80px;
 }
 
-/* cover */
-.cover {
-    margin-top: -20px;
-    margin-bottom: 20px;
-    width: 100%;
-    height: 500px;
-    background: url("/images/shelves.jpg") center center no-repeat;
-    background-size: cover;
+.row.show {
+    margin-top: 10vh;
 }
-.cover .cover-inner {
-    height: 100%;
-    margin: auto;
-    display: table;
+
+
+.example {/*親div*/
+  position: relative;/*相対配置*/
+  
+  margin-bottom: 10vh;
+  }
+
+.example p {
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: white;/*文字は白に*/
+  font-weight: bold; /*太字に*/
+  font-size: 45px;/*サイズ2倍*/
+  font-family :Quicksand, sans-serif;/*Google Font*/
 }
-.cover .cover-inner .cover-contents {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    position: relative;
+.example a:not(.control) {/*aタグを画像の真ん中に*/
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  /*以下装飾*/
+  }
+img.d-block{
+    height:700px;
 }
-.cover .cover-inner .cover-contents h1 {
-    margin: 0 0 20px 0;
-    color: #fff;
-    font-weight: bold;
-    letter-spacing: 0.15em;
-    font-size: 60px
+.button span {
+     display: inline-block;
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
-.cover .btn-success {
+.button span:hover{
+    -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.button a:hover{
+    color: white;
+}
+
+
+  .button {
+  display: inline-block;
+  padding: .65em 3em;
+  background: -webkit-linear-gradient(#fe5f95 , #ff3f7f);
+  background: linear-gradient(#fe5f95 , #ff3f7f);
+  border: 1px solid #fe3276;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.button span {
+  position: relative;
+  display: inline-block;
+  padding-left: 1.6em;
+}
+.button span::before {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  content: '\002764';
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  -webkit-animation: icon 1.5s ease-in-out infinite;
+  animation: icon 1.5s ease-in-out infinite;
+}
+@-webkit-keyframes icon {
+  50% { -webkit-transform: scale(1.2); }
+}
+@keyframes icon {
+  50% { transform: scale(1.2); }
+}
+
+
+.card-title.caption.show-more{
+  
+    font-size: 20px;
+}
+
+ 
+
+.btn-success {
     background-color: #ed486f;
-    border-color: #ed486f;
+    border-color: white;
 }
+
 
 .logo {
     text-decoration: none;
@@ -74,32 +148,42 @@ footer {
 }
 
 /* item */
-.book .panel-body {
-    height: 100px;
+
+
+.book.card.bg-dark {
+	width:			200px;
+	height:			250px;
+	overflow:		hidden;
+	margin:			10px 8px 10px 16px;
+	position:		relative;
 }
-.book .panel-heading {
-    height: 250px;
+.card .caption {
+	font-size:		100%;
+	text-align: 	center;
+	color:			#fff;
+	padding-top: 35px;
+	
 }
-.book .panel-heading img {
-    height: 100%;
-    max-width: 100%;
+.card .mask {
+	width:			100%;
+	height:			100%;
+	position:		absolute;	/* 絶対位置指定 */
+	top:			0;
+	left:			0;
+	opacity:		0;	/* マスクを表示しない */
+	background-color:	rgba(0,0,0,0.4);	/* マスクは半透明 */
+	-webkit-transition:	all 0.2s ease;
+	transition:		all 0.2s ease;
 }
-p.book-title {
-    /* Keep the number of lines in a sentence on two lines, and add "..." to the end of line. */
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-align: center;
+.card:hover .mask {
+	opacity:		1;	/* マスクを表示する */
+
 }
 
-.book .panel-body {
-    height: 150px;
+.want-users{
+    margin-bottom: 30px;
 }
 
-.book .panel-body p {
-    text-align: center;
-}
 .book .buttons form {
     display: inline-block;
     margin: 0 5px;
@@ -137,3 +221,12 @@ p.book-title {
 }
 
 
+.card-footer{
+    background-color: #E6E6E6;
+}
+
+.card.show-more{	
+    width:280px;
+	height:	350px;
+    
+}
