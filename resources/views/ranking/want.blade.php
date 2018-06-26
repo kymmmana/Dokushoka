@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>年間ランキング</h1>
+   
+        <strong>年間ランキング</strong>
+        
+        
     @include('books.books', ['books' => $books])
 @endsection

@@ -9,24 +9,43 @@
             <h1>{{ $user->name }}</h1>
         </div>
         <div class="status text-center">
-            <ul>
-                <li>
-                    <div class="status-label">LOVE</div>
-                    <div id="want_count" class="status-value">
-                        {{ $count_want }}
-                    </div>
-                </li>
-                <li>
-                    <div class="status-label">READ</div>
-                    <div id="have_count" class="status-value">
-                        xxx
-                    </div>
-                </li>
-            </ul>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Love {{ $count_want }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Follow</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Follower</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">TimeLine</a>
+  </li>
+</ul>
+
+           
         </div>
     </div>
     @include('books.books', ['books' => $books])
     {!! $books->render() !!}
+    
+    <div class="row">
+         <div class="col-xs-8">
+           
+            @if (Auth::id() == $user->id)
+                  {!! Form::open(['route' => 'reviews.store']) !!}
+                      <div class="form-group">
+                          {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
+                          {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+                      </div>
+                  {!! Form::close() !!}
+            @endif
+            @if (count($reviews) > 0)
+                @include('reviews.reviews', ['reviews' => $reviews])
+            @endif
+        </div>
+    </div>
 @endsection
 
 

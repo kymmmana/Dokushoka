@@ -23,5 +23,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('books', 'BooksController', ['only' => ['create', 'show']]);
     Route::post('want', 'BookUserController@want')->name('book_user.want');
     Route::delete('want', 'BookUserController@dont_want')->name('book_user.dont_want');
-    Route::resource('users', 'UsersController', ['only' => ['show']]);
+    Route::resource('users', 'UsersController', ['only' => ['index','show']]);
+    Route::resource('reviews', 'ReviewsController',['only'=>['store', 'destroy']]);
 });

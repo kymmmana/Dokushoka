@@ -36,7 +36,13 @@
     
 @endsection
 
+    
 @section('content')
+<div class=card whole>
+<div class= "card-header text-center whole">
+        <strong>注目の本</strong>
+        </div>
     @include('books.books')
     {!! $books->render() !!}
+    </div>
 @endsection
