@@ -6,11 +6,9 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUserReviewTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
+     
+     
     public function up()
     {
         Schema::create('user_review', function (Blueprint $table) {
@@ -22,16 +20,16 @@ class CreateUserReviewTable extends Migration
              $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('review_id')->references('id')->on('reviews');
             
+            $table->unique(['user_id', 'review_id']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
+
+     
     public function down()
     {
         Schema::dropIfExists('user_review');
     }
 }
+?>

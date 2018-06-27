@@ -44,5 +44,7 @@
         </div>
     @include('books.books')
     {!! $books->render() !!}
+    
     </div>
+ 
 @endsection

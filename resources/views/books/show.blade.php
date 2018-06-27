@@ -8,13 +8,12 @@
                     
                         <img class= "card-img show-more" src="{{ $book->image_url }}" alt="">
                     
-                    <div class="card-footer text-center">
+                    <div class="card-footer text-center" style= background-color:white; >
                         <p class="card-title">タイトル: {{ $book->title }}</p>
                         <p class="card-title">作者: {{ $book->author }}</p>
                         <div class="buttons text-center">
-                            @if (Auth::check())
-                                @include('books.want_button', ['book' => $book])
-                            @endif
+                         
+                                       <p class="text-center"><a href="{{ $book->url }}" target="_blank">楽天詳細ページへ</a></p>
                         </div>
                     </div>
                 </div>
@@ -25,7 +24,7 @@
             <div class="want-users">
                 <div class="card">
                     <div class="card-header text-center">
-                        Item Caption
+                        あらすじ
                     </div>
                     
                      <div class="card-body text-center">
@@ -45,11 +44,15 @@
                         @foreach ($want_users as $user)
                             <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>
                         @endforeach
-                    </div
+                    </div>
                     </div>
                 </div>
             </div>
-            <p class="text-center"><a href="{{ $book->url }}" target="_blank">楽天詳細ページへ</a></p>
+    <?php $reviews = $book->reviews(); ?>
+    
+            @include('reviews.reviews')
+   
         </div>
+    
     </div>
 @endsection

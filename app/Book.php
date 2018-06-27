@@ -17,4 +17,10 @@ class Book extends Model
     {
         return $this->users()->where('type', 'want');
     }
+    
+     public function reviews()
+    {
+        return $this->hasMany(Review::class)->paginate(20);
+    }
+    
 }

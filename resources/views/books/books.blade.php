@@ -25,6 +25,16 @@
                             </div>
                         @endif
                     </div>
+                    <div class="">
+                        <div class="btn-group">
+                            
+                            @if (Auth::user()->is_wanting($book->id))
+                                {!! link_to_route('reviews.create', 'この本をレビュー', ['book_id' => $book->id]) !!}
+                            @endif
+                       <a href="{{ $book->url }}" class="btn btn-link text-info"><i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                    
                 </div>
             
             <!--/div-->

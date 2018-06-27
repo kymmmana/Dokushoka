@@ -18,6 +18,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->integer('book_id')->unsigned()->index();
+            $table->string('title');
             $table->text('content');
             $table->timestamps();
             
